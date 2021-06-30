@@ -152,3 +152,50 @@ def delete(self,data):
 					node = node.next
 ```
 
+<br>
+
+### 더블 링크드 리스트
+
+- 링크드 리스트에 node 가 9000개 일떄 8000번째의 node를 찾으려면 8000번을 검색해야 한다.
+- 이때 앞에서 부터 검색하지 않고, 뒤에서 부터 검색하게 되면 검색횟수를 8000번에서 1000번으로 줄일 수가 있다.
+- 이때 사용하는것이 더블 링크드 리스트이다.
+- `이전 데이터 주소`, `데이터`, `다음 데이터 주소`로 구성되어 있다.
+
+<img width="386" alt="스크린샷 2021-06-27 오후 2 12 30" src="https://user-images.githubusercontent.com/60416187/123533791-48e29b80-d753-11eb-832a-e7397e9b6320.png">
+
+<br/>**링크드 리스트 구현**
+
+```python
+class Node:
+	def __init__(self,data,prev=None,next=None):
+		self.prev = prev
+		self.data = data
+		self.next = next
+
+class NodeMgmt:
+	# 노드 생성
+	def __init__(self,data):
+		self.head = Node(data)
+		self.tail = self.head
+
+	# 맨 끝에 노드 추가
+	def insert(self,data):
+		if self.head == None:
+			self.head = Node(data)
+			slef.tail = self.head
+		else:
+			node = self.head
+			while node.next:
+				node = node.next
+			new = Node(data)
+			node.next = new
+			new.prev = node
+			self.tail = new
+	
+	# 데이터를 처음 노드부터 출력
+	def desc(self):
+		node = self.head
+		while node:
+			print(node.data)
+			node = node.next
+```
