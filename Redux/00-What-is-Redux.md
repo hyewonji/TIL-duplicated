@@ -22,3 +22,6 @@
 
 - console.log(action.type, action, state, newState);
 - 다음과 같이 원하는 정보를 reducer안에서 한번에 호출 할 수 있다.
+
+
+<img src="https://user-images.githubusercontent.com/60416187/125717829-9866efd4-203b-412a-b3ef-ec3e4431d011.png" width="600">
