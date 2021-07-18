@@ -111,3 +111,27 @@ export default UserScreen;
 - Button의 Touch Event로 onPress Props를 정의한다.
 - Screen으로부터 전달받은 navigation의 navigate함수를 이용한다.
 - App.js에서 Stack.Screen의 name값을 불러온다.
+
+
+## navigation.navigate 와 navigation.push의 차이
+- Home 화면에서 `this.props.navigation.navigate('Home')`와 `this.props.navigation.push('Home')`을 썼을 때의 차이점을 살펴보자.
+- `this.props.navigation.navigate('Home')` : Home 화면에서 Home 화면으로의 변화이기 때문에 버튼을 클릭했을때 변화가 없다.
+- `this.props.navigation.push('Home')` : Home 화며에서 새로운 창이 생성되면서 Home화면이 새롭게 보여진다.
+- 그리고 goBack()함수를 이용한다면 stack에서 하나씩 pop되면서 제거된다.
+
+### Going Back
+```jsx
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Home... again"
+        onPress={() => navigation.push('Home')}
+      />
+      <Button title="Go to Detail" onPress={() => navigation.navigate('Detail')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />. {/* stack이 pop 되면서 제거된다.*/}
+    </View>
+  );
+}
+```
