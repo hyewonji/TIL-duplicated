@@ -63,3 +63,13 @@ export default App;
 ```
 - react native 에서 제공해주는 FlatList를 사용해 리스트를 나타낼 수 있다.
 - ScrollView에 비해 많은 양의 데이터를 보여주기에 좋다.
+
+### 2. Component
+- 컴포넌트화 한다.
+
+### 3. RecyclerListView
+- 3rd-party 라이브러리 RecyclerListView를 사용한다.
+
+---------------------------------
+<img width="1047" alt="스크린샷 2021-07-21 오후 9 50 24" src="https://user-images.githubusercontent.com/60416187/126491501-43fd58bd-f20d-499f-9084-63779f5396fc.png">
+출처 : https://gorapaduck.tistory.com/entry/React-Native-ScrollView-vs-FlatList-vs-RecyclerListView
