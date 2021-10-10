@@ -1,4 +1,10 @@
-# Apollo Client
+# Apollo
+
+### GrapqhQl을 위한 환경설정
+
+<img width="805" alt="스크린샷 2021-10-06 오후 3 21 55" src="https://user-images.githubusercontent.com/60416187/136151431-cda09904-8adc-4cf8-bc2b-c8983710442a.png">
+
+</br>
 
 ### Apollo Client란?
 
@@ -10,7 +16,7 @@
 
 ### 환경설정
 
-**패키지 설치** 
+**패키지 설치**
 
 ```
 $ npm i apollo-client apollo-cache-inmemory apollo-link-http graphql graphql-tag
@@ -47,22 +53,22 @@ const client = new ApolloClient({
 ```jsx
 // 쿼리 작성
 const GET_USERLIST = gql`
-  query getSearchedUsers($filter: SearchFilter!){
+  query getSearchedUsers($filter: SearchFilter!) {
     getSearchedUsers(filter: $filter) {
       users {
-      id
+        id
+      }
     }
   }
-}
 `;
 
 // 쿼리 호출
 const { loading, error, data } = useQuery(GET_USERLIST, {
-    variables: { filter: { category: '디자인', searchKeyword: '' }},
-  });
+  variables: { filter: { category: "디자인", searchKeyword: "" } },
+});
 ```
 
 - 위의 코드는 `category`, `searchKeyword` 라는 변수값으로 필더된 user의 id를 호출한다.
 - 변수는 variables에 객체로 넣어준다.
-- 단, 변수($filter 와 같은)가 없다면 variables를 적어줄 필요가 없다.
+- 단, 변수(\$filter 와 같은)가 없다면 variables를 적어줄 필요가 없다.
 - 호출이 성공적으로 이뤄졌다면 **값**은 `data`, **에러 메세지**는 `error`, **로딩여부**는 `loading`에 담겨진다.
