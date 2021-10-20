@@ -10,7 +10,7 @@
 
 - GraphQL API를 호출할 때 사용하는 클라이언트 라이브러리
 - React, Agular, Vue를 동시 지원한다.
-- 중앙 상태관리가 가능해 Redux를 대체할 수 있다.
+- cache로 전역 상태관리가 가능해 Redux를 대체할 수 있다.
 
 <br>
 
@@ -51,7 +51,7 @@ const client = new ApolloClient({
 **쿼리 작성 및 호출**
 
 ```jsx
-// 쿼리 작성
+// 쿼리 작성( 요청하는 데이터와 변수를 표시한다. )
 const GET_USERLIST = gql`
   query getSearchedUsers($filter: SearchFilter!) {
     getSearchedUsers(filter: $filter) {
@@ -72,3 +72,4 @@ const { loading, error, data } = useQuery(GET_USERLIST, {
 - 변수는 variables에 객체로 넣어준다.
 - 단, 변수(\$filter 와 같은)가 없다면 variables를 적어줄 필요가 없다.
 - 호출이 성공적으로 이뤄졌다면 **값**은 `data`, **에러 메세지**는 `error`, **로딩여부**는 `loading`에 담겨진다.
+- query(데이터 호출) 외에 mutation(데이터 수정), subscription(데이터 구독), refetch(데이터 재호출) 등이 있다.

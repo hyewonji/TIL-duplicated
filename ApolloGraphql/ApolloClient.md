@@ -1,4 +1,5 @@
 # Apollo Client
+
 **React-Native 프로젝트**에 GraphQl, Apollo-Cli를 사용하면서 Redux, UseContext 등의 상태관리 라이브러리 없이 **Apollo-cli로 전역 상태관리**를 하려한다.
 
 ### Apollo Client 작동 원리
@@ -6,11 +7,10 @@
 <img src="https://user-images.githubusercontent.com/60416187/128115774-5d9c188b-5d02-4633-9af3-5d7ef8fdf3f1.png" alt="drawing" width="700"/>
 
 - Apollo Client의 작동 원리이다.
+- 이때 요청한 필드가 로컬에 캐싱되어있지 않다면 GraphQL Server에 원격 필드를 요청한다.
 - 이때 요청한 필드가 로컬에 캐싱되어있다면 밑의 그림과 같이 작동한다.
-- 이때 요청한 필드가 로컬에 캐싱되어있지 않다면 GraphQL Server에 원격 필드를 요청한다.  
 
 <br>
-
 
 <img src="https://user-images.githubusercontent.com/60416187/128116150-bdca73b4-5cc8-4e9d-9a3c-d56088be9f1a.png" alt="drawing" width="700"/>
 
