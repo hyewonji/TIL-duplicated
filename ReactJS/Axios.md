@@ -17,17 +17,16 @@ react에서 네트워크 통신을 도와주는 api로 axios와 fetch가 있다.
 - 다양한 `브라우저를 지원`한다.(구형 포함)
 - `응답시간 초과를 설정`하는 방법이 있다.
 - `request aborting` (요청취소)가 가능하다
-- catch에 걸렸을 때, .then을 실행하지 않고, .`console창에 해당 에러 로그`를 보여준다.
+- 응답을 제대로 받았다면 `.then`을, 에러가 발생했을 때는 `.catch`이 실행된다.
 - axios 는 status 값이 200 인지와 `statusText` 를 통해서 확인한다.
 - axios 는 response 객체의 `data property` 에 접근함으로써 얻는다.
 - return 값은 `Promise 객체 형태`이다.
 
 ### Axios 사용
 
-- URL의 반복되는 부분을 변수로 선언하고 사용한다.
-- HTTP 클라이언트 **라이브러리**로 비동기 방식으로 HTTP 데이터 요청을 진행한다.
-- JS의 비동기처리를 해결하기 위해 async, await를 같이 쓴다.
 - axios 설치 : `yarn add axios`
+- URL의 반복되는 부분을 변수로 선언하고 사용한다.
+- JS의 비동기처리를 해결하기 위해 async, await를 같이 쓴다.
 
 **api.js**
 
