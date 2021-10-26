@@ -1,5 +1,11 @@
 ### Spread Operator
 
+- 배열, 혹은 객체 안의 요소들을 가져오기 위함이다.
+
+<br>
+
+**Spread Operator을 사용하지 않을때**
+
 ```jsx
 const days = ["Mon", "Tues", "Wed"];
 const otherDays = ["Tue", "Fri", "Sat"];
@@ -19,6 +25,12 @@ console.log(allDays3);
 //[Array[3],Array[3]]
 ```
 
+- 서로다른 두 배열의 통합이 어렵다.
+
+<br>
+
+**Spread Operator을 사용할때**
+
 ```jsx
 const days = ["Mon", "Tues", "Wed"];
 const otherDays = ["Tue", "Fri", "Sat"];
@@ -29,11 +41,16 @@ console.log(allDays);
 //['Mon', 'Tues', 'Wed', 'Tue', 'Fri', 'Sat', 'Sun']
 ```
 
-- Array 뿐만 아니라 Object에도 적용된다.
+- `...days`: days 배열 안의 'Mon', 'Tues', 'Wed'를 가져온다.
+- `...otherDays`: otherDays 배열 안의 'Tue', 'Fri', 'Sat'를 가져온다.
+- Array 뿐만 아니라 **Object에도 적용**된다.
+
+<br>
+<br>
 
 ### Rest Operation
 
-함수 선언시 정해지지 않은 수의 파라미터를 받아올 때 사용한다.
+함수 파라미터에 선언해주지 않은 값을 받아올 때 사용한다.
 
 ```jsx
 const obj = { name: "Hyewon", favFood: "Kimchi", password: "12345" };
@@ -44,6 +61,9 @@ let removePassword = ({ password, ...rest }) => rest;
 console.log(removePassword);
 // { name: "Nicolas", favFood: "Kimchi"}
 ```
+
+<br>
+<br>
 
 ### Freeze
 
