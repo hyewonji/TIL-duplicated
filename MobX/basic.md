@@ -26,3 +26,5 @@ $ npm i mobx mobx-react-light
 2. `root/store` 폴더 안에 정의해둔 여러개의 stores를 `root/store`의 `index`파일에서 하나로 합쳐준다.
 3. observable 변수를 참조하는 react 컴포넌트를 mobx-react-light의 **obsever로 감싸준다.**
 4. store가 들어있는 **context를 생성**하고 app에서 store의 변화를 감지해 rendering 해주기 위해 **context provider로 app을 감싸준다.**
+
+전역 상태를 참조하는 컴포넌트에서 context의 변수 및 action을 사용한다.

@@ -5,8 +5,8 @@
 DOM은 원본 단순 HTML을 JS가 이해할 수 있는 객체 형태로 파싱한 것이다.
 조작하고 싶은 요소를 찾고, 속성(스타일, 텍스트 등)을 조작을 할 수있게 하는 Method와 Property를 제공한다.
 
-DOM의 개체 구조는 `노드 트리`로 표현된다.
-아래 HTML은 루트 요소인 `<html>` 은 `부모 줄기`, 루트 요소에 내포된 `태그`들은 `자식 나뭇가지`, `요소` 안의 컨텐츠는 `잎`에 해당한다.
+DOM의 개체 구조는 `노드 트리`로 표현되는데, 다음 그림에서 HTML tag들은 JS에서 Node로 변환된다.
+
 ![https://i2.wp.com/oursmalljoy.com/wp-content/uploads/2020/12/DOM.jpg?resize=1200%2C416&ssl=1](https://i2.wp.com/oursmalljoy.com/wp-content/uploads/2020/12/DOM.jpg?resize=1200%2C416&ssl=1)
 
 ### DOM의 역할

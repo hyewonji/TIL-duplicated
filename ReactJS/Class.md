@@ -11,7 +11,7 @@ class Human {
 const hw = new Human("Hyewon", "Ji");
 
 console.log(hw.name);
-//Hyewon
+// Hyewon
 ```
 
 ```jsx
