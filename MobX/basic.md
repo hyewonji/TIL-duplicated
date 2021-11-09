@@ -4,6 +4,11 @@
 - Redux는 함수형 아이디어이고, MobX는 반응형 아이디어이다.
 - 상태를 관찰(observe) 하고상태가 변경되는것을 감지하고 반영한다. 즉, MobX는 상태를 observable하게 관리 하도록 돕는 라이브러리다.
 
+### MobX 작동방식
+- 데이터 단방향 흐름 Flux 패턴을 사용한다.
+![flow2](https://user-images.githubusercontent.com/60169820/140641877-4dd6eb44-9737-4844-ae7c-6b712981fdbc.png)
+
+</br>
 </br>
 
 이번 글에서는 **React에서 mobx 사용**하는 방법을 알아본다.
