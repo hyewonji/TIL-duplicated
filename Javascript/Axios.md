@@ -7,7 +7,8 @@ react에서 네트워크 통신을 도와주는 api로 axios와 fetch가 있다.
 ### Fetch
 
 - 지원하지 않는 브라우저가 있다.
-- 자바스크립트 `내장 라이브러리이기` 때문에 import하지 않고 사용할 수 있다.
+- 브라우저 `내장 라이브러리이기` 때문에 import하지 않고 사용할 수 있다.
+- 단, 자바스크립트의 내장 라이브러리는 아니라서 node 환경에서는 'node-fetch'라는 패키지를 설치해줘야 한다.
 - 라이브러리의 `업데이트에 따른 에러 방지`가 가능하다 ( React Native의 경우 업데이트가 잦아서 라이브러리가 쫓아오지 못하는 경우가 많은데, fetch의 경우 이를 방지할 수 있다.)
 - `네트워크 에러`가 발생했을 때 기다려야 한다. (reponse timeout API 제공 x)
 - fetch 의 request 함수는 response 객체가 `ok 프로퍼티`를 포함하는 것으로 정상적인 요청/응답을 체크한다.
@@ -24,6 +25,7 @@ react에서 네트워크 통신을 도와주는 api로 axios와 fetch가 있다.
 - catch에 걸렸을 때, .then을 실행하지 않고, .`console창에 해당 에러 로그`를 보여준다.
 - axios 는 status 값이 200 인지와 `statusText` 를 통해서 확인한다.
 - axios 는 response 객체의 `data property` 에 접근함으로써 얻는다.
+- .json() 메소드를 호출할 필요가 없다.
 - return 값은 `Promise 객체 형태`이다.
 
 </br>
