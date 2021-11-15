@@ -5,3 +5,5 @@
 ### commonJS도 모듈화 제공하지 않나 ?
 
 사실 웹팩과 바벨을 사용해 모듈시스템을 쓰는것이 일반적이지만, 이전에는 JS를 사용하는 모든 환경에서 모듈화 해주는 CommonJS를 사용했다. 하지만 모듈화를 지원하지 않는 브라우저가 있다. 브라우져에 상관없이 모듈을 사용하기 위해 웹팩이 등장했다.
+
+참고한 블로그 : [김정환 블로그]("https://jeonghwan-kim.github.io/series/2019/12/10/frontend-dev-env-webpack-basic.html")
