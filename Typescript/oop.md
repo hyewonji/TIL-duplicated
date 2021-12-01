@@ -24,21 +24,6 @@
 
 - 서로 관련있는 데이터와 함수를 한 object 안에 담아두어 캡술화 하는것
 
-### Abstraction( 추상화 )
-
-- 내부의 복잡한 기능을 이해하지 않고 외부에서 간단한 interface를 통해 사용하는것
-
-### Inheritance( 상속화 )
-
-- Parent - Child / Super - Sub / Base - Derived의 용어를 사용한다.
-- 정의해둔 클래스를 재사용해서 기능을 추가한 새로운 클래스를 생성할 수 있다.
-
-### Polymorphism( 다형성 )
-
-- 상속을 통해 생성된 클래스들은 서로 다른 기능을 가지더라도 부모 클래스에서 제공하는 공통적인 함수로 접근할 수 있다.
-
-<br>
-
 ## 실전코드
 
 ```jsx
@@ -103,3 +88,100 @@
 - public : 외부에서 볼 수 있으며 수정 가능하다.
 - private : 외부에서 보지지 못하고 수정하지 못한다. 유효하지 않은 값으로 수정하는 오류를 방지하기 위해 사용한다.
 - protected : 외부에서 접근하지는 못하지만 상속한 자식 클래스에서는 접근이 가능하다.
+
+### Abstraction( 추상화 )
+
+- 내부의 복잡한 기능을 이해하지 않고 외부에서 간단한 interface를 통해 사용하는것
+
+**실전 코드**
+```jsx
+{
+  type CoffeeCup = { shots: number; hasMilk: boolean };
+
+  interface CoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+  }
+
+  interface CommercialCoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+    fillCoffeeBeans(beans: number): void;
+    clean(): void;
+  }
+
+  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
+    private coffeeBeans: number = 0;
+    private BEANS_GRAMM_PER_CUP: number = 7;
+
+    private constructor(coffeeBeans: number) {
+      this.coffeeBeans = coffeeBeans;
+    }
+
+    // 머신 만드는 함수 ( 새로운 instance 생성 )
+    static makeMachine(coffeeBeans: number): CoffeeMachine {
+      return new CoffeeMachine(coffeeBeans);
+    }
+
+    // 커피콩 채우는 함수
+    fillCoffeeBeans(beans: number) {
+      if (beans < 0) {
+        throw new Error("value for beans should be greater then 0");
+      }
+      this.coffeeBeans += beans;
+    }
+
+    // 커피머신 청소하는 함수
+    clean() {
+      console.log("cleaning the machine...🧼");
+    }
+
+    // 커피콩 가는 함수
+    private grindBeans(shots: number) {
+      console.log(`grinding beans for ${shots}`);
+      if (this.coffeeBeans < shots * this.BEANS_GRAMM_PER_CUP) {
+        throw new Error("Not enough coffee beans!");
+      }
+      this.coffeeBeans -= shots * this.BEANS_GRAMM_PER_CUP;
+    }
+
+    // 커피머신 데우기 함수
+    private preheat(): void {
+      console.log("heating up... 🔥");
+    }
+
+    // 샷 추출 함수
+    private extract(shots: number): CoffeeCup {
+      console.log(`Pulling ${shots} shots... ☕️`);
+      return { shots, hasMilk: false };
+    }
+
+   // 커피 만드는 함수 
+    makeCoffee(shots: number): CoffeeCup {
+      this.grindBeans(shots);
+      this.preheat();
+      return this.extract(shots);
+    }
+  }
+
+  const maker: CoffeeMaker = CoffeeMachine.makeMachine(32);
+  maker.makeCoffee(2);
+
+  const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
+  maker2.fillCoffeeBeans(32);
+  maker2.makeCoffee(2);
+  maker2.clean();
+}
+```
+- 서로다른 CoffeMaker, CommercialCoffeeMaker 인터페이스를 정의해 코드를 작성해보았다.
+- maker는 CoffeMaker라는 makeCoffee만 정의된 인터페이스를 사용하고,
+- maker2는 CommercialCoffeeMaker라는 fillCoffeeBeans,clean이 추가로 정의된 인터페이스를 사용했다.
+- 따라서 maker, maker2가 접근할 수 있는 함수의 범위가 달라진다.
+- 인터페이스는 단순히 타입을 정의할 뿐 아니라 해당 객체의 사용방법을 알려주는 역할을 한다.
+
+### Inheritance( 상속화 )
+
+- Parent - Child / Super - Sub / Base - Derived의 용어를 사용한다.
+- 정의해둔 클래스를 재사용해서 기능을 추가한 새로운 클래스를 생성할 수 있다.
+
+### Polymorphism( 다형성 )
+
+- 상속을 통해 생성된 클래스들은 서로 다른 기능을 가지더라도 부모 클래스에서 제공하는 공통적인 함수로 접근할 수 있다.
