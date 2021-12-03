@@ -182,6 +182,69 @@
 - Parent - Child / Super - Sub / Base - Derived의 용어를 사용한다.
 - 정의해둔 클래스를 재사용해서 기능을 추가한 새로운 클래스를 생성할 수 있다.
 
+```jsx
+{
+  type CoffeeCup = { shots: number; hasMilk: boolean };
+
+  interface CoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+  }
+
+  // interface를 구현할 때는 implements를 쓴다.
+  // 위 추상화에서 사용한 CoffeeMacine을 2가지만 수정하고 그대로 사용한다.( 생략 )
+  // 1. constructor를 public으로 설정을 바꿔줘서 자식 객체에서접근이 가능하게 한다.
+  // 2. makeMachine 함수에 자식 클래스에서만 사용하는 serialNumber를 option으로 넣어준다.(부모객체 생성 할때 필수 아님)
+  class CoffeeMachine implements CoffeeMaker {
+  ... 
+  }
+
+  //-----------------------------------------------여기부터 상속받는 클래스!!
+  // 다른 클레스를 상속할 때는 extends를 쓴다.
+  class CaffeLatteMachine extends CoffeeMachine {
+    // readonly : 한번 선언한 후 바뀌지 않는 변수 설정
+    constructor(beans: number, public readonly serialNumber: string) {
+      super(beans); // 자식클래스에서 생성자를 따로 구현해야 하는경우 super로 부모 생성자를 호출해야 한다.
+    }
+
+    static makeLatteMachine(
+      coffeeBeans: number,
+      serialNumber: string
+    ): CaffeLatteMachine {
+      return new CaffeLatteMachine(coffeeBeans, serialNumber);
+    }
+
+    private steamMilk(): void {
+      console.log("steaming some milk...🥛");
+    }
+
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots); // 부모 객체의 함수를 가져올 때에는 super호출
+      this.steamMilk();
+      return {
+        ...coffee,
+        hasMilk: true,
+      };
+    }
+  }
+
+  const latteMachine = CaffeLatteMachine.makeLatteMachine(23, "sss");
+  const coffee = latteMachine.makeCoffee(1);
+  console.log(coffee);
+  console.log(latteMachine.serialNumber);
+}  
+```
+```
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+steaming some milk...🥛
+{ shots: 1, hasMilk: true }
+sss
+```
+- 결과값은 위와같다. hasMilk가 true로 바뀐것을 볼 수 있다.
+- extends를 사용해 부모 클래스를 상속받을 수 있다.
+- super를 사용해 부모클래스의 함수 및 변수를 사용할 수 있다.
+
 ### Polymorphism( 다형성 )
 
 - 상속을 통해 생성된 클래스들은 서로 다른 기능을 가지더라도 부모 클래스에서 제공하는 공통적인 함수로 접근할 수 있다.
