@@ -8,3 +8,11 @@
 ```javascript
   let age: number | undefined
 ```
+
+
+### union type
+```jsx
+type Direction = "left" | "right" | "up" | "down";
+```
+- 또는의 의미로 사용된다.
+- 위의 코드에서 Direction은 "left", "right", "up", "down" 중의 하나여야만 한다.
