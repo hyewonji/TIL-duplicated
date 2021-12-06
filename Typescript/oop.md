@@ -248,3 +248,94 @@ sss
 ### Polymorphism( 다형성 )
 
 - 상속을 통해 생성된 클래스들은 서로 다른 기능을 가지더라도 부모 클래스에서 제공하는 공통적인 함수로 접근할 수 있다.
+
+```jsx
+{
+  type CoffeeCup = { shots: number; hasMilk?: boolean; suger?: boolean };
+
+  interface CoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+  }
+
+  // 아메리카노 만드는 클래스( 위의 상속화의 함수와 동일 )
+  class CoffeeMachine implements CoffeeMaker {
+    ...
+  }
+
+  // 라떼 만드는 클래스( 위의 상속화의 함수와 동일 )
+  class CaffeLatteMachine extends CoffeeMachine {
+    ...
+  }
+
+  class SweetCoffeeMachine extends CoffeeMachine {
+
+    public makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots);
+      return {
+        ...coffee,
+        suger: true;
+      };
+    }
+  }
+
+  const machines: CoffeeMaker[] = [
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, "aaa"),
+    new SweetCoffeeMachine(16),
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, "aaa"),
+    new SweetCoffeeMachine(16),
+  ];
+
+  machines.forEach((machien) => {
+    console.log("------------------");
+    machien.makeCoffee(1);
+  });
+}
+```
+  
+결과는 다음과 같다.
+  
+```
+grinding beans for 3
+heating up... 🔥
+Pulling 3 shots... ☕️
+Adding 6 pump of syrup
+grinding beans for 3
+heating up... 🔥
+Pulling 3 shots... ☕️
+Adding 6 pump of syrup
+{ shots: 3, hasMilk: false, syrup: 6 }
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+steaming some milk...🥛
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+Adding 2 pump of syrup
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+steaming some milk...🥛
+------------------
+grinding beans for 1
+heating up... 🔥
+Pulling 1 shots... ☕️
+Adding 2 pump of syrup  
+```
+- 내부적으로 구현된 다양한 클래스(CoffeeMachine, CaffeLatteMachine, SweetCoffeeMachine) 들이 한가지 인터페이스를 구현하거나 동일한 부모 클래스를 상속했을 때 공통된 API를 호출할 수 있다.
+- 즉, 다형성은 하나의 인터페이스 혹은 부모클래스를 상속한 자식클래스들이 부모 인터페이스 혹은 부모클래스에 있는 함수들를 다른 방식을 다향하게 구성하면서 다향성을 만드는 것을 의미
+- 사용자는 클래스 내부에 있는 복잡한 함수의 기능들을 알지 않아도 약속된 한가지 API를 호출하면서 간편하게 다향한 기능들을 활용할 수 있게 도와준다.
+  
