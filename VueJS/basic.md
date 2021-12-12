@@ -43,4 +43,5 @@ ex) `this.$emit`, `this.$router.push('/')`
 # Life Cycle Diagram
 <img src="https://user-images.githubusercontent.com/60416187/145717251-c38d24d3-8d85-423a-b09a-c4b2ae5e38d3.png" width="700"/>
 
+[라이프 사이클 상세 설명](https://v3.ko.vuejs.org/api/options-lifecycle-hooks.html#created)
 
