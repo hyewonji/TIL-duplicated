@@ -39,3 +39,8 @@ export default {
 
 - 프로젝트 내의 **전역변수**를 사용할 경우는 $를 사용한다.</br>
 ex) `this.$emit`, `this.$router.push('/')`
+
+# Life Cycle Diagram
+<img src="https://user-images.githubusercontent.com/60416187/145717251-c38d24d3-8d85-423a-b09a-c4b2ae5e38d3.png" width="700"/>
+
+
