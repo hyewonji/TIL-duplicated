@@ -33,7 +33,7 @@ Vue.js는 template, script, style이 분리되어있다. 따라서 template에�
 	  el: '#example',
 	  data: {
 	    message: '안녕하세요'
-	  },
+	  },data 
 	  computed: {
 	    // 계산된 getter
 	    reversedMessage: function () {
@@ -61,3 +61,33 @@ computed를 메소드로 사용하면 캐시를 사용하지 않고 렌더링 �
 	</div>
 </template>
 ```
+
+## watch
+
+```jsx
+<template>
+  <div>
+    <p>원본 메시지: "{{ message }}"</p>
+    <p>역순으로 표시한 메시지: "{{ reversedMessage }}"</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'test',
+  data(){
+    return {
+      message: '안녕하세요',
+      reversedMessage: ''
+    }
+  },
+  watch: {
+    message: function (newVal, oldVal) {
+      this.reversedMessage = newVal.split('').reverse().join('')
+    }
+  }
+}
+</script>
+```
+
+watch는 특정 프로퍼티의 변경시점에 특정 액션(call api, push route …)을 취하고자 할때 적합하다.
