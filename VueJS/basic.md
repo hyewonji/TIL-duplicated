@@ -54,3 +54,29 @@ ex) `this.$emit`, `this.$router.push('/')`
 
 [라이프 사이클 상세 설명](https://v3.ko.vuejs.org/api/options-lifecycle-hooks.html#created)
 
+# components naming
+
+Vue.js에서 컴포넌트 네이밍 하는 방법에는 두가지 옵션이 있다.
+
+- kebab-case
+- PascalCase
+
+단, 케밥 케이스만 DOM에 바로 사용할 수 있다.
+
+만약 import한 컴포넌트명을 수정하고 싶다면, 다음과 같이 작성해 사용할 수 있다.
+
+```jsx
+<template>
+	<order-control></order-control>
+<template>
+
+<script>
+import { orderControl } from '#modules/control-panel'
+
+export default{
+	components: {
+	    'order-control': orderControl
+	}
+}
+<script>
+```
