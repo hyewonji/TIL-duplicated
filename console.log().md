@@ -6,15 +6,14 @@
 
 ### log level
 
-1. 출력
-2. 정보
-3. 경보
-4. 예상치 못한 에러, 시스템 에러
+1. 출력 : console.log()
+2. 정보 : console.info()
+3. 경보 : console.warn()
+4. 예상치 못한 에러, 시스템 에러 : console.error()
 
 ### assert
 
-- 처음 조건이 참이 아닐 경우만 출력
-
+- 첫번째 매개변수의 조건이 참이 아닐 경우만 출력
 ```jsx
 console.assert(2 == 3, "not same!");
 console.assert(2 == 2, "same!");
