@@ -27,7 +27,8 @@
     
     - `behavior` : 스크롤 에니메이션을 설정한다. `auto`, `smooth`
     
-- **대부분의 브라우저가 지원한다.**
+- **모든 브라우저가 지원한다.**
+- 단. Safari에서는 option parameter를 지원하지 않는다.
 
 ### **scrollIntoViewIfNeeded(**Value**)**
 
